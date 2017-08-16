@@ -56,6 +56,39 @@ router.post('/register', function(req, res){
 	}
 });
 
+// Register Data
+router.post('/data', function(req, res){
+	var player = req.body.player;
+	var club = req.body.club;
+	console.log(player+club);
+	// Validation
+	req.checkBody('player', 'player is required').notEmpty();
+	req.checkBody('club', 'club is required').notEmpty();
+
+	var errors = req.validationErrors();
+
+	if(errors){
+		res.render('register',{
+			errors:errors
+		});
+	} else {
+		var newData = new User({
+			player: player,
+			club: club
+		});
+
+		User.createUser(newData, function(err, user){
+			if(err) throw err;
+			console.log(user);
+		});
+
+		req.flash('success_msg', 'data successfully entered');
+
+		res.redirect('/');
+	}
+});
+
+
 passport.use(new LocalStrategy(
   function(username, password, done) {
    User.getUserByUsername(username, function(err, user){

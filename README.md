@@ -1,2 +1,2 @@
 # Digital Heritage Project
-Data collection portal for digital heritage project at CVIT, IIIT Hyderabad. 
+Data collection platform for projects at CVIT, IIIT Hyderabad. 

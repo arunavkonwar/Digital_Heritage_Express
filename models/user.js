@@ -15,8 +15,15 @@ var UserSchema = mongoose.Schema({
 	},
 	name: {
 		type: String
+	},
+	player: {
+		type: String
+	},
+	club: {
+		type: String
 	}
 });
+
 
 var User = module.exports = mongoose.model('User', UserSchema);
 
